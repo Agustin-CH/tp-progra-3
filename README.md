@@ -111,7 +111,7 @@ La aplicación estará corriendo en el puerto **8080**.
    - Comparar Algoritmos
 
 2. **Configurar parámetros:**
-   - Tamaño del tablero (4×4 hasta 12×12)
+   - Tamaño del tablero (varía según algoritmo: Backtracking hasta 8×8, Warnsdorff/PD hasta 20×20)
    - Posición inicial del caballo
    - Para PD: número de movimientos
 
