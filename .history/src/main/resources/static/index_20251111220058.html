@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knight's Tour - TP Programación III</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Knight's Tour Problem</h1>
+            <p>Trabajo Práctico - Programación III - UADE 2025</p>
+        </header>
+
+        <div class="content">
+            <aside class="sidebar">
+                <h2>Configuración</h2>
+                
+                <label>
+                    Algoritmo
+                    <select id="algorithm">
+                        <option value="backtracking">Backtracking</option>
+                        <option value="warnsdorff" selected>Warnsdorff (Greedy)</option>
+                        <option value="dynamic">Programación Dinámica</option>
+                        <option value="compare">Comparar Algoritmos</option>
+                    </select>
+                </label>
+
+                <label>
+                    Tamaño tablero (n×n)
+                    <input type="number" id="boardSize" min="3" max="12" value="6">
+                    <small style="color: #666; font-size: 11px;">
+                        ⚠️ 3×3 y 4×4 no tienen solución
+                    </small>
+                </label>
+
+                <label>
+                    Fila inicial
+                    <input type="number" id="startRow" min="0" value="0">
+                </label>
+
+                <label>
+                    Columna inicial
+                    <input type="number" id="startCol" min="0" value="0">
+                </label>
+
+                <div id="dpOptions" style="display: none;">
+                    <label>
+                        Movimientos (k)
+                        <input type="number" id="maxMoves" min="1" max="20" value="10">
+                    </label>
+                    <button id="generatePoints" class="btn-secondary">Generar Puntos</button>
+                </div>
+
+                <button id="solveBtn" class="btn-primary">Resolver</button>
+
+                <div id="animationControls" style="display: none;">
+                    <h3>Controles de Animación</h3>
+                    <div class="animation-buttons">
+                        <button id="prevBtn" class="btn-nav">← Anterior</button>
+                        <button id="nextBtn" class="btn-nav">Siguiente →</button>
+                    </div>
+                    <div class="step-info">
+                        Paso: <span id="currentStep">0</span> / <span id="totalSteps">0</span>
+                    </div>
+                    <button id="resetBtn" class="btn-secondary">Reiniciar</button>
+                </div>
+
+                <div id="loader" style="display: none;">Calculando...</div>
+
+                <div id="results" style="display: none;">
+                    <h3>Resultados</h3>
+                    <div id="resultContent"></div>
+                </div>
+            </aside>
+
+            <main>
+                <div id="board"></div>
+                
+                <div class="info">
+                    <h3>Algoritmos Implementados</h3>
+                    <div class="algo-card">
+                        <strong>Backtracking</strong>
+                        <p>Explora todos los caminos posibles. Complejidad: O(8^(n²))</p>
+                    </div>
+                    <div class="algo-card">
+                        <strong>Warnsdorff (Greedy)</strong>
+                        <p>Elige siempre la casilla con menos opciones. Complejidad: O(n²)</p>
+                    </div>
+                    <div class="algo-card">
+                        <strong>Programación Dinámica</strong>
+                        <p>Maximiza puntos en k movimientos. Complejidad: O(n² × k)</p>
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background: #f9f9f9; border-radius: 3px;">
+                        <h4 style="margin-bottom: 12px; font-size: 14px;">📋 Caminos Alternativos (Tablero 5×5)</h4>
+                        <p style="font-size: 12px; color: #666; margin-bottom: 10px;">
+                            Backtracking encuentra múltiples soluciones. Cargando ejemplos...
+                        </p>
+                        <div id="exampleSolutions" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; min-height: 60px;">
+                            <div style="grid-column: 1 / -1; text-align: center; color: #999; font-size: 12px; padding: 20px;">
+                                Cargando soluciones desde el servidor...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
